@@ -1,4 +1,4 @@
-const db = Gun(['http://localhost:8765/gun', 'https://gundm.herokuapp.com/']);
+const db = Gun(['http://localhost:8765/gun', 'https://gundm.herokuapp.com/gun']);
 const messageContainer = document.getElementById('message_container')
 db.get('messages').map().once((data) => {
   if (data) {
