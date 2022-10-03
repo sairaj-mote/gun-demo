@@ -6,19 +6,52 @@
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Gun App</title>
+  <link rel="stylesheet" href="css/main.min.css">
   <script src="https://cdn.jsdelivr.net/npm/gun/gun.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gun/sea.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gun/lib/radix.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gun/lib/radisk.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gun/lib/store.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gun/lib/rindexed.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@editorjs/editorjs@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@editorjs/header@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@editorjs/list@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@editorjs/simple-image@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@editorjs/quote@latest"></script>
+  <script id="floGlobals">
+    /* Constants for FLO blockchain operations !!Make sure to add this at begining!! */
+    const floGlobals = {
+      blockchain: "FLO",
+      adminID: "FKAEdnPfjXLHSYwrXQu377ugN4tXU7VGdf",
+      application: "TEST_MODE",
+    }
+  </script>
+  <script src="scripts/lib.js"></script>
+  <script src="scripts/floCrypto.js"></script>
+  <script src="scripts/floBlockchainAPI.js"></script>
+  <script src="scripts/compactIDB.js"></script>
+  <script src="scripts/floCloudAPI.js"></script>
+  <script src="scripts/floDapps.js"></script>
+  <script id="onLoadStartUp">
+    function onLoadStartUp() {
+
+      //floDapps.addStartUpFunction('Sample', Promised Function)
+      //floDapps.setAppObjectStores({sampleObs1:{}, sampleObs2:{options{autoIncrement:true, keyPath:'SampleKey'}, Indexes:{sampleIndex:{}}}})
+      //floDapps.setCustomPrivKeyInput( () => { FUNCTION BODY *must resolve private key* } )
+      floDapps.launchStartUp().then(result => {
+        console.log(result)
+        // alert(`Welcome FLO_ID: ${myFloID}`)
+        //App functions....
+      }).catch(error => console.error(error))
+    }
+  </script>
 </head>
 
-<body>
-  <div id="message_container"></div>
-  <form id="my_form">
-    <input type="text" id="get_message" placeholder="write message">
-    <button type="submit">Send</button>
-  </form>
+<body onload="onLoadStartUp()">
+  <div class="flex">
+    <div id="editorjs"></div>
+  </div>
+  <button id="save">Save</button>
   <script type="module" src="main.js"></script>
 </body>
 
