@@ -1,4 +1,4 @@
-const db = Gun(['http://localhost:8765/gun', 'https://gun-manhattan.herokuapp.com/gun']);
+const db = Gun(['http://localhost:8765/gun', 'https://gundm.herokuapp.com/']);
 const messageContainer = document.getElementById('message_container')
 db.get('messages').map().once((data) => {
   if (data) {
@@ -17,3 +17,5 @@ document.getElementById('my_form').addEventListener('submit', (e) => {
     getMessage.value = ''
   }
 })
+
+
